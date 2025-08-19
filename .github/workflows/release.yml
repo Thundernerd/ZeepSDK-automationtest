@@ -33,7 +33,7 @@ jobs:
       - name: Set CSProj Version
         uses: KageKirin/set-csproj-version@v1.0.0
         with:
-          file: ${{ steps.csproj.outputs.csproj_name }}.csproj
+          file: ${{ steps.csproj.outputs.csproj_path }}
           version: ${{ env.VERSION }}
 
       - name: Publish
@@ -43,7 +43,7 @@ jobs:
         id: asm
         uses: ./.github/actions/get-assembly-name
         with:
-          csproj: ${{ steps.csproj.outputs.csproj_name }}
+          csproj: ${{ steps.csproj.outputs.csproj_path }}
 
       - name: Remove msstore source
         run: winget source remove msstore

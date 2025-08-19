@@ -5,6 +5,9 @@ outputs:
   csproj_name:
     description: "Base name of the first *.csproj found"
     value: ${{ steps.csproj.outputs.csproj_name }}
+  csproj_path:
+    description: "Full path of the first *.csproj found"
+    value: ${{ steps.csproj.outputs.csproj_path }}
 
 runs:
   using: "composite"
@@ -16,3 +19,4 @@ runs:
         $item = Get-ChildItem -Filter *.csproj -Recurse | Select-Object -First 1
         if (-not $item) { Write-Error "No .csproj found"; exit 1 }
         "csproj_name=$($item.BaseName)" >> $env:GITHUB_OUTPUT
+        "csproj_path=$($item.FullName)" >> $env:GITHUB_OUTPUT
