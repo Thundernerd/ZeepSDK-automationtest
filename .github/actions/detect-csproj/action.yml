@@ -13,6 +13,6 @@ runs:
       id: csproj
       shell: pwsh
       run: |
-        $item = Get-ChildItem -Filter *.csproj Recurse | Select-Object -First 1
+        $item = Get-ChildItem -Filter *.csproj -Recurse | Select-Object -First 1
         if (-not $item) { Write-Error "No .csproj found"; exit 1 }
         "csproj_name=$($item.BaseName)" >> $env:GITHUB_OUTPUT
