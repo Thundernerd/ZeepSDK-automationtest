@@ -5,8 +5,8 @@ on:
     types: [published]
 
 env:
-  GAME_ID: 0000
-  MOD_ID: 0000
+  GAME_ID: 3213
+  MOD_ID: 5179362
 
 jobs:
   build:
